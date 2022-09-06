@@ -43,7 +43,7 @@ struct staff
     char gender;
     char uid[10];
     struct address b;
-    char ph[10];
+    char ph[11];
     double salary;
     char dept [20];
     char desig[40];
@@ -61,13 +61,13 @@ void menu()
 {
     char choice;
     printf("\t\t*************************************************");
-    printf("\n\t\t  *** WELCOME TO HOSPITAL MANAGEMENT SYSTEM ***");
+    printf("\n\t\t  *** WELCOME TO DIGITAL APPOINTMENT SYSTEM ***");
     printf("\n\t\t*************************************************");
     printf("\n\n\n\n\n\n\n");
-    printf("\t\t1.PATIENT");
-    printf("\n\t\t2.STAFF");
-    printf("\n\t\t3.INVENTORY");
-    printf("\n\t\t0.EXIT");
+    printf("\t\t1. PATIENT");
+    printf("\n\t\t2. DOCTOR");
+    printf("\n\t\t3. MEDICAL TEST");
+    printf("\n\t\t0. EXIT");
     printf("\n\n\tEnter your choice: ");
     fflush(stdin);
     choice=getche();
@@ -114,13 +114,13 @@ void pat()
     {
         clrscr();
         printf("\n\n\t\t\tPATIENT");
-        printf("\n\t\t1.Enter a New Entry");
-        printf("\n\t\t2.Modify Existing");
-        printf("\n\t\t3.Search an Entry");
-        printf("\n\t\t4.Listing of records");
-        printf("\n\t\t5.Delete an Entry");
-        printf("\n\t\t6.Search by doc info");
-        printf("\n\t\t7.Main Menu");
+        printf("\n\t\t1. Place a new appointment");
+        printf("\n\t\t2. Modify existing appointment data");
+        printf("\n\t\t3. Search an appointment");
+        printf("\n\t\t4. Listing of appointments");
+        printf("\n\t\t5. Delete an Entry");
+        printf("\n\t\t6. Search appointment by doc info");
+        printf("\n\t\t7. Main Menu");
         printf("\n\n\t\tEnter your choice here: ");
         fflush(stdin);
         ch=getche();
@@ -133,7 +133,7 @@ void pat()
             while(another=='Y'||another=='y')
             {
 w:
-                printf("\n\n\nEnter Registration Number: ");
+                printf("\n\n\nEnter Appointment Number: ");
                 scanf("%s",reg);
                 rewind(fp);
                 while(fread(&p,recsize,1,fp)==1)
@@ -141,7 +141,7 @@ w:
                     if(strcmp(p.regn,reg)==0)
                     {
                         i=1;
-                        printf("\n\t\tTHIS REGISTRATION NUMBER ALREADY EXISTS. ENTER ANOTHER ONE");
+                        printf("\n\t\tTHIS APPOINTMENT NUMBER ALREADY EXISTS. ENTER ANOTHER ONE");
                         goto w;
                     }
                 }
@@ -168,16 +168,16 @@ w:
                     fflush(stdin);
                     printf("\n\tEnter the street/colony: ");
                     scanf("%s",p.a.street);
-                    printf("\n\tEnter the city: ");
+                    printf("\n\tEnter the district: ");
                     scanf("%s",p.a.city);
-                    printf("\n\tEnter the state: ");
+                    printf("\n\tEnter the division: ");
                     scanf("%s",p.a.state);
                     printf("\nEnter the phone number of the patient: ");
                     scanf("%s",p.ph);
                     fflush(stdin);
-                    printf("\nEnter the Disease or problem for which he/she wants treatment: ");
-                    scanf("%s",p.disease);
-                    fflush(stdin);
+                    //printf("\nEnter the Disease or problem for which he/she wants treatment: ");
+                    //scanf("%s",p.disease);
+                    //fflush(stdin);
                     printf("\nEnter the name of the Doctor to which he/she being referred: ");
                     gets(p.doc_name);
                     printf("\nEnter the history, if any, related to treatment of the patient(If yes then write 'Y' if NO then write 'N'): ");
@@ -281,8 +281,8 @@ out:
                         printf("\nGender : %c",p.gender);
                         printf("\nBlood group: %s",p.bg);
                         printf("\nAddress  : %d,%s,%s,%s",p.a.hno,p.a.street,p.a.city,p.a.state);
-                        printf("\nphone number : +91-%s",p.ph);
-                        printf("\nDisease : %s",p.disease);
+                        printf("\nphone number : +88%s",p.ph);
+                        //printf("\nDisease : %s",p.disease);
                         printf("\nEarlier History : ");
                         puts(p.history);
                         printf("\nDetails of treatment given and medicine prescribed:");
@@ -314,7 +314,7 @@ out:
                 printf("\nBlood group: %s",p.bg);
                 printf("\nAddress  : %d,%s,%s,%s",p.a.hno,p.a.street,p.a.city,p.a.state);
                 printf("\nphone number : %s",p.ph);
-                printf("\nDisease : %s",p.disease);
+                //printf("\nDisease : %s",p.disease);
                 printf("\nEarlier History : ");
                 puts(p.history);
                 printf("\nDetails of treatment given and medicine prescribed:");
@@ -374,8 +374,8 @@ out:
                         printf("\nGender : %c",p.gender);
                         printf("\nBlood group: %s",p.bg);
                         printf("\nAddress  : %d,%s,%s,%s",p.a.hno,p.a.street,p.a.city,p.a.state);
-                        printf("\nphone number : +91-%s",p.ph);
-                        printf("\nDisease : %s",p.disease);
+                        printf("\nphone number : +88-%s",p.ph);
+                        //printf("\nDisease : %s",p.disease);
                         printf("\nEarlier History : ");
                         puts(p.history);
                         printf("\nDetails of treatment given and medicine prescribed:");
@@ -423,14 +423,14 @@ void emp()
     while(1)
     {
         clrscr();
-        printf("\n\t\t\tEMPLOYEE");
-        printf("\n\t\t1.Add an Entry");
-        printf("\n\t\t2.Modify Existing One");
-        printf("\n\t\t3.Search an Entry");
-        printf("\n\t\t4.Listing of all records");
-        printf("\n\t\t5.Delete an Entry");
-        printf("\n\t\t6.Search by Department");
-        printf("\n\t\t7.Main Menu");
+        printf("\n\t\t\tDOCTOR");
+        printf("\n\t\t1. Register a new doctor");
+        printf("\n\t\t2. Modify registered doctor's data");
+        printf("\n\t\t3. Search a doctor");
+        printf("\n\t\t4. Listing of registered doctors");
+        printf("\n\t\t5. Unregister a doctor");
+        printf("\n\t\t6. Search doctors by departments");
+        printf("\n\t\t7. Main Menu");
         printf("\n\n\t\tEnter your choice here: ");
         fflush(stdin);
         c=getche();
@@ -443,7 +443,7 @@ void emp()
             while(more=='Y'||more=='y')
             {
 u:
-                printf("\n\n\nEnter the UID of the Employee: ");
+                printf("\n\n\nEnter the UID of the Doctor: ");
                 scanf("%s",id);
                 rewind(fs);
                 while(fread(&s,recsize1,1,fs)==1)
@@ -460,19 +460,19 @@ u:
                     fseek (fs,0,SEEK_END);
                     strcpy(s.uid,id);
                     fflush(stdin);
-                    printf("\nEnter the name of the Employee: ");
+                    printf("\nEnter the name of the Doctor: ");
                     gets(s.name);
                     printf("\nEnter the name of the Guardian: ");
                     gets(s.fname);
                     printf("\nEnter the gender of the patient(M.male or F.female): ");
                     scanf("%c",&s.gender);
-                    printf("\nEnter the Blood group of the Employee: ");
+                    printf("\nEnter the Blood group of the Doctor: ");
                     scanf("%s",s.bg);
-                    printf("\nEnter the age of the Employee: ");
+                    printf("\nEnter the age of the Doctor: ");
                     scanf("%d",&s.age);
-                    printf("\nEnter the Salary of the Employee: ");
+                    printf("\nEnter the Salary of the Doctor: ");
                     scanf("%lf",&s.salary);
-                    printf("\nEnter the address of the Employee:\n");
+                    printf("\nEnter the address of the Doctor:\n");
                     printf("\n\tEnter the house number: ");
                     scanf("%d",&s.b.hno);
                     fflush(stdin);
@@ -482,16 +482,16 @@ u:
                     scanf("%s",s.b.city);
                     printf("\n\tEnter the state: ");
                     scanf("%s",s.b.state);
-                    printf("\nEnter the phone number of the Employee: ");
+                    printf("\nEnter the phone number of the Doctor: ");
                     scanf("%s",s.ph);
                     fflush(stdin);
-                    printf("\nEnter the Designation: ");
+                    printf("\nEnter the degrees: ");
                     gets(s.desig);
                     printf("\nEnter the department: ");
                     scanf("%s",s.dept);
                     fwrite(&s,recsize1,1,fs);
                     printf("\n----------------------------------------------------");
-                    printf("\nWant to add entry of the another Employee(Y/N): ");
+                    printf("\nWant to register another Doctor(Y/N): ");
                     fflush(stdin);
                     more=getche();
                 }
@@ -502,7 +502,7 @@ u:
             more='Y';
             while(more=='Y'||more=='y')
             {
-                printf("\nEnter the UID of the patient to modify: ");
+                printf("\nEnter the registration number of doctor to modify: ");
                 scanf("%s",id);
                 rewind(fs);
                 while(fread(&s,recsize1,1,fs)==1)
@@ -510,17 +510,17 @@ u:
                     if(strcmp(s.uid,id)==0)
                     {
                         fflush(stdin);
-                        printf("\nEnter the new name of the Employee: ");
+                        printf("\nEnter the new name of the doctor: ");
                         gets(s.name);
                         printf("\nEnter the new name of the Guardian: ");
                         gets(s.fname);
-                        printf("\nEnter the new Blood group of the Employee: ");
+                        printf("\nEnter the new Blood group of the Doctor: ");
                         scanf("%s",s.bg);
-                        printf("\nEnter the new age of the Employee: ");
+                        printf("\nEnter the new age of the Doctor: ");
                         scanf("%d",&s.age);
-                        printf("\nEnter the new Salary of the Employee: ");
+                        printf("\nEnter the new Salary of the Doctor: ");
                         scanf("%lf",&s.salary);
-                        printf("\nEnter the new address of the Employee:\n");
+                        printf("\nEnter the new address of the Doctor:\n");
                         printf("\n\tEnter the house number: ");
                         scanf("%d",&s.b.hno);
                         fflush(stdin);
@@ -530,7 +530,7 @@ u:
                         scanf("%s",s.b.city);
                         printf("\n\tEnter the state: ");
                         scanf("%s",s.b.state);
-                        printf("\nEnter the new phone number of the Employee: ");
+                        printf("\nEnter the new phone number of the Doctor: ");
                         scanf("%s",s.ph);
                         fseek(fs,-recsize1,SEEK_CUR);
                         fwrite(&s,recsize1,1,fs);
@@ -555,9 +555,9 @@ u:
                 {
                     if(strcmp(s.name,s_name)==0)
                     {
-                        printf("\nUID of the Employee : ");
+                        printf("\nRegistration number of the Doctor : ");
                         puts(s.uid);
-                        printf("\nName of the Employee : ");
+                        printf("\nName of the Doctor : ");
                         puts(s.name);
                         printf("\nName of the Guardian : ");
                         puts(s.fname);
@@ -567,7 +567,7 @@ u:
                         printf("\nGender : %c",s.gender);
                         printf("\nBlood group: %s",s.bg);
                         printf("\nAddress  : %d,%s,%s,%s",s.b.hno,s.b.street,s.b.city,s.b.state);
-                        printf("\nphone number : +91-%s",s.ph);
+                        printf("\nphone number : +88-%s",s.ph);
                         printf("\nDesignation : %s",s.desig);
                     }
                 }
@@ -582,9 +582,9 @@ u:
             rewind(fs);
             while(fread(&s,recsize1,1,fs)==1)
             {
-                printf("\nUID of the Employee : ");
+                printf("\nUID of the Doctor : ");
                 puts(s.uid);
-                printf("\nName of the Employee : ");
+                printf("\nName of the Doctor : ");
                 puts(s.name);
                 printf("\nName of the Guardian : ");
                 puts(s.fname);
@@ -593,7 +593,7 @@ u:
                 printf("\nGender : %c",s.gender);
                 printf("\nBlood group: %s",s.bg);
                 printf("\nAddress  : %d,%s,%s,%s",s.b.hno,s.b.street,s.b.city,s.b.state);
-                printf("\nphone number : +91-%s",s.ph);
+                printf("\nphone number : +88-%s",s.ph);
                 printf("\nDesignation : %s",s.desig);
                 printf("\n----------------------------------------------------\n");
             }
@@ -604,7 +604,7 @@ u:
             more='Y';
             while(more=='Y'||more=='y')
             {
-                printf("\nEnter the UID of the Employee to be deleted: ");
+                printf("\nEnter the UID of the Doctor to be deleted: ");
                 scanf("%s",id);
                 fx=fopen("tem.DAT","wb+");
                 rewind(fs);
@@ -637,9 +637,9 @@ u:
                 {
                     if(strcmp(s.dept,dptname)==0)
                     {
-                        printf("\nUID of the Employee : ");
+                        printf("\nUID of the Doctor : ");
                         puts(s.uid);
-                        printf("\nName of the Employee : ");
+                        printf("\nName of the Doctor : ");
                         puts(s.name);
                         printf("\nName of the Guardian : ");
                         puts(s.fname);
