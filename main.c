@@ -61,7 +61,7 @@ void menu()
 {
     char choice;
     printf("\t\t*************************************************");
-    printf("\n\t\t  *** WELCOME TO DIGITAL APPOINTMENT SYSTEM ***");
+    printf("\n\t\t       *** DIGITAL APPOINTMENT SYSTEM ***");
     printf("\n\t\t*************************************************");
     printf("\n\n\n\n\n\n\n");
     printf("\t\t1. PATIENT");
@@ -89,6 +89,39 @@ void menu()
 void main()
 {
     system("COLOR E4");
+    printf("\n\t\t***** WELCOME TO DIGITAL APPOINTMENT SYSTEM **************");
+    printf("\n\n\n\n\n");
+    printf("\t\tPlease sign in to use our system\n\n");
+    while (1)
+    {
+wrong_id:
+        printf("\t\tEnter your user id: ");
+        int id;
+        scanf ("%d",&id);
+
+        if(id==101)
+        {
+wrong_pass:
+            printf("\t\tEnter your password: ");
+            int pass;
+            scanf ("%d",&pass);
+            if (pass==12345)
+                break;
+            else
+            {
+                printf ("You have entered a wrong password.\n");
+                goto wrong_pass;
+            }
+        }
+
+        else
+        {
+            printf ("You have entered a wrong user id.\n");
+            goto wrong_id;
+        }
+    }
+    printf("You have signed in to the system successfully.\n");
+    system("cls");
     menu();
 }
 void pat()
